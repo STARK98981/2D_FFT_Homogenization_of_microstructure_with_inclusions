@@ -1,5 +1,5 @@
 This code is a simple Python implementation of the original FFT Algorithm developed by Moulinec and Suquet (1998) for microstructures with linear elastic isotropic phases.
-While developing this code following two main repositories have been refered:
+While developing this code, the following two central repositories have been referred to in addition to the original paper:
   1. https://github.com/Arvinth-shankar/FFT_Composite/blob/main/FFT_microstructure.jl
   2. https://github.com/Firdes/FFT-based-Homogenization/blob/master/standardFFT-linear-elastic.py
 
