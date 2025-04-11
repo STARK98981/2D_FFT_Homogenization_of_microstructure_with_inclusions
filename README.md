@@ -5,4 +5,4 @@ While developing this code following two main repositories have been refered:
 
 
 Original Paper: H. Moulinec, Pierre Suquet. A numerical method for computing the overall response of nonlinear composites with complex microstructure. Computer Methods in Applied Mechanics and Engineering, 
-1998, 157 (1-2), ￿10.1016/S0045-7825(97)00218-1
+1998, 157 (1-2), 10.1016/S0045-7825(97)00218-1
