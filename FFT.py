@@ -6,7 +6,7 @@ import cmasher as cmr
 # Geometry and Discretization
 # ---------------------
 ndim = 2
-Nx = Ny = N = 513  # grid dimensions
+Nx = Ny = N = 129  # grid dimensions
 Ngrids = Nx * Ny
 phase_contrast = 0.6
 fibre_volume = 0.2
@@ -52,12 +52,26 @@ for i in range(ndim):
 # Build Phase Distribution for a circular inclusion at the centre
 # ---------------------------------------------------------------
 phase = np.zeros((N, N))  
-R2 = fibre_volume * N**2 / np.pi
-for x in range(N):
-    for y in range(N):
-        if ((x - N//2)**2 + (y - N//2)**2) <= R2:
-            phase[x, y] = 1  # fiber region; matrix remains 0
 
+# Functions for defining different inclusions
+def Circular_inclusion():
+    R2 = fibre_volume * N**2 / np.pi
+    for x in range(N):
+        for y in range(N):
+            if ((x - N//2)**2 + (y - N//2)**2) <= R2:
+                phase[x, y] = 1  
+
+def Special_inclusion():  
+    R2 = N * np.sqrt(2 * fibre_volume / (np.pi))
+    for x in range(N):
+        for y in range(N):
+            theta = np.arctan2(y -  N//2, x -  N//2)
+            if np.sqrt(((x - N//2)**2 + (y - N//2)**2)) <= R2*np.abs(np.cos(2 * theta)):
+                phase[x, y] = 1
+
+# Choose function depending on the inclusion desired
+Circular_inclusion()
+#Special_inclusion()
 
 # Construct C_mat: assign stiffness tensor at each grid point
 C_mat = np.empty((Nx, Ny, ndim, ndim, ndim, ndim))
