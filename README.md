@@ -1,6 +1,6 @@
 # **2D_FFT_Homogenization**
 
-This code is a simple Python implementation of the original FFT Algorithm developed by Moulinec and Suquet (1998) for microstructures with linear elastic isotropic phases (Non-linearity and other more involved constitutive relations have not been implemented yet).
+This code is a simple Python 2D implementation of the original FFT Algorithm developed by Moulinec and Suquet (1998) for microstructures with linear elastic isotropic phases (Non-linearity and other more involved constitutive relations have not been implemented yet).
 
 While developing this code, the following two central repositories have been referred to in addition to the original paper:
 
