@@ -1,11 +1,31 @@
-# **2D_FFT_Homogenization**
+# 2D FFT-based Homogenization of Microstructures with Inclusions
 
-This code is a simple Python 2D implementation of the original FFT Algorithm developed by Moulinec and Suquet (1998) for microstructures with linear elastic isotropic phases (Non-linearity and other more involved constitutive relations have not been implemented yet).
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Python](https://img.shields.io/badge/Python-3.8%2B-blue.svg)](https://www.python.org/)
 
-While developing this code, the following two central repositories have been referred to in addition to the original paper:
+Numerical homogenization toolkit implementing both Fixed-Point and Conjugate Gradient (CG) accelerated FFT-based solvers for linear elastic composite materials with periodic microstructures.
 
-- [FFT Microstructure.jl](https://github.com/Arvinth-shankar/FFT_Composite/blob/main/FFT_microstructure.jl)
-- [Standard FFT Linear Elastic](https://github.com/Firdes/FFT-based-Homogenization/blob/master/standardFFT-linear-elastic.py)
+<img src="images/stress_field.png" width="45%"> <img src="images/microstructure.png" width="45%">
 
-**Original Paper:**  
-H. Moulinec, Pierre Suquet. A numerical method for computing the overall response of nonlinear composites with complex microstructure. *Computer Methods in Applied Mechanics and Engineering*, 1998, 157 (1-2), [10.1016/S0045-7825(97)00218-1](https://doi.org/10.1016/S0045-7825(97)00218-1)
+## Key Features
+
+- **Multi-solver Support**
+  - Classical Fixed-Point FFT (Moulinec-Suquet)
+  - CG-accelerated FFT (Zeman et al. 2010)
+  
+- **Microstructure Generation**
+  - Circular inclusions
+  - Special-shaped inclusions (parametric)
+  - Custom phase distributions
+  
+- **Material Properties**
+  - Isotropic linear elasticity
+  - Arbitrary phase contrast ratios
+  - Automatic reference medium computation
+
+- **Advanced Features**
+  - Green's operator in Fourier space
+  - Spectral convergence monitoring
+  - Stress/strain visualization
+  - Effective property computation
+
