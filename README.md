@@ -5,7 +5,6 @@
 
 Numerical homogenization toolkit implementing both Fixed-Point and Conjugate Gradient (CG) accelerated FFT-based solvers for linear elastic composite materials with periodic microstructures.
 
-<img src="images/stress_field.png" width="45%"> <img src="images/microstructure.png" width="45%">
 
 ## Key Features
 
@@ -21,11 +20,6 @@ Numerical homogenization toolkit implementing both Fixed-Point and Conjugate Gra
 - **Material Properties**
   - Isotropic linear elasticity
   - Arbitrary phase contrast ratios
-  - Automatic reference medium computation
-
-- **Advanced Features**
-  - Green's operator in Fourier space
-  - Spectral convergence monitoring
-  - Stress/strain visualization
-  - Effective property computation
+ 
+    
 
