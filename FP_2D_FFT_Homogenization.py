@@ -69,9 +69,40 @@ def Special_inclusion():
             if np.sqrt(((x - N//2)**2 + (y - N//2)**2)) <= R2*np.abs(np.cos(2 * theta)):
                 phase[x, y] = 1
 
-# Choose function depending on the inclusion desired
-Circular_inclusion()
+def Random_Periodic_Circular_Inclusions(R=8):
+
+    # Total number of random circles
+    n_circles = int(np.ceil(fibre_volume * Nx*Ny / (np.pi * R**2)))
+    
+    centers = [] 
+    while len(centers) < n_circles:
+        cx, cy = np.random.randint(N), np.random.randint(N)
+        # required check for new center to be ≥2R away from all existing circles and (periodic)
+        ok = True
+        for (px,py) in centers:
+            dx = min(abs(cx-px), N-abs(cx-px))
+            dy = min(abs(cy-py), N-abs(cy-py))
+            if dx*dx + dy*dy < (2*R)**2:
+                ok = False
+                break
+        if ok:
+            centers.append((cx,cy))
+    
+    # Assign the centre of circles into the phase array
+    for x in range(Nx):
+        for y in range(Ny):
+            for (cx,cy) in centers:
+                dx = min(abs(x-cx), N-abs(x-cx))
+                dy = min(abs(y-cy), N-abs(y-cy))
+                if dx*dx + dy*dy <= R*R:
+                    phase[x,y] = 1
+                    break
+
+
+## Choose function depending on the inclusion desired
+#Circular_inclusion()
 #Special_inclusion()
+Random_Periodic_Circular_Inclusions()
 
 # Construct C_mat: assign stiffness tensor at each grid point
 C_mat = np.empty((Nx, Ny, ndim, ndim, ndim, ndim))
@@ -82,7 +113,7 @@ for x in range(Nx):
         else:
             C_mat[x, y] = C_m_tensor
 
-"""
+
 # Plot the microstructure using a heatmap.
 plt.figure(figsize=(6, 6))
 plt.imshow(phase, cmap=cmr.redshift, origin='lower')
@@ -91,7 +122,7 @@ plt.title('Phase Distribution: Fiber in Matrix')
 plt.xlabel('x')
 plt.ylabel('y')
 plt.show()
-"""
+
 
 # ---------------------
 # Green's Operator in Fourier Space
